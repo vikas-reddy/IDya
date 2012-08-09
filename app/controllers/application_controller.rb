@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user, :login_required
 
   def logged_in?
-    !session[:username].nil?
+    !current_user.nil?
   end
 
   def current_user
-    session[:username]
+    session[:user]
   end
 
   def login_required

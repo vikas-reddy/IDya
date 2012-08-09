@@ -33,7 +33,10 @@ module PramatiLdap
       nil
     else
       res = ldap.search.first
-      [res[:cn].try(:first), res[:mail].try(:first)]
+      {
+        full_name: res[:cn].try(:first),
+        email:    res[:mail].try(:first)
+      }
     end
   end
 

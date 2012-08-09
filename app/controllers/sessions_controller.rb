@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
   # POST /sign_in
   def create
     if PramatiLdap::authenticate(params[:username], params[:password])
-      session[:username] = params[:username]
+
+      # Since the 'user' object is immutable, it can safely be serialized and
+      # stored in a session
+      session[:user] = User.new(params[:username])
+
       redirect_to root_path, alert: 'Successfully signed in'
     else
       flash.now[:error] = 'Invalid username and password'
@@ -17,7 +21,7 @@ class SessionsController < ApplicationController
 
   # DELETE /sign_out
   def destroy
-    session[:username], session[:is_admin] = nil, nil
+    session[:username], session[:user], session[:is_admin] = nil, nil, nil
     flash[:alert] = 'You\'re logged out of the application'
     redirect_to signin_path
   end
