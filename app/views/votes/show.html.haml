@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Id:
+  = @vote.id
+%p
+  %b Idea:
+  = @vote.idea_id
+%p
+  %b For against:
+  = @vote.for_against
+%p
+  %b User:
+  = @vote.user_id
+= link_to 'Edit', edit_vote_path(@vote)
+|
+\#{link_to 'Back', votes_path}

@@ -2,8 +2,12 @@
 
 one:
   id: 1
-  ldap_username: MyString
+  title: MyString
+  description: 
+  user_id: 1
 
 two:
   id: 1
-  ldap_username: MyString
+  title: MyString
+  description: 
+  user_id: 1
