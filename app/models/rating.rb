@@ -3,5 +3,5 @@ class Rating
   field :id, type: Integer
   field :improvisation_id, type: Integer
   field :rated, type: Integer
-  field :user_name, type: String
+  field :username, type: String
 end

@@ -4,5 +4,5 @@ class Idea
   field :id, type: Integer
   field :title, type: String
   field :description, type: Varchar
-	field :user_name, type: String
+	field :username, type: String
 end

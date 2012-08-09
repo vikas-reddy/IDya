@@ -13,6 +13,10 @@ class User
     @full_name, @email = details[:full_name], details[:email]
   end
 
+  def self.find(username)
+    self.new(username)
+  end
+
   def ideas
     Idea.where(username: ldap_name)
   end
