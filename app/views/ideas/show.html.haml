@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Id:
+  = @idea.id
+%p
+  %b Title:
+  = @idea.title
+%p
+  %b Description:
+  = @idea.description
+%p
+  %b User:
+  = @idea.user_id
+= link_to 'Edit', edit_idea_path(@idea)
+|
+\#{link_to 'Back', ideas_path}
