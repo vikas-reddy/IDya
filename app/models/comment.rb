@@ -1,8 +1,11 @@
 class Comment
+
   include Mongoid::Document
-  field :id, type: Integer
-  field :commentable_id, type: Integer
-  field :commentable_type, type: String
+  include Mongoid::Timestamps
+
   field :username, type: String
-  field :description, type: Varchar
+  field :body, type: String
+  field :username, type: String
+
+  belongs_to :commentable, polymorphic: true
 end

@@ -1,7 +1,10 @@
 class Rating
+
   include Mongoid::Document
-  field :id, type: Integer
-  field :improvisation_id, type: Integer
-  field :rated, type: Integer
+  include Mongoid::Timestamps
+
+  field :score, type: Integer
   field :username, type: String
+
+  embedded_in :ratable, polymorphic: true
 end
