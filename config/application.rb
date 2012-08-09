@@ -66,8 +66,8 @@ module IDya
     config.assets.version = '1.0'
 
     # This will allow you to use the rails generate model command with MongoMapper.
-    config.generators do |g|
-      g.orm :mongo_mapper
-    end
+    #config.generators do |g|
+    #  g.orm :mongo_mapper
+    #end
   end
 end

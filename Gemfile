@@ -19,7 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'mongo_mapper'
+gem 'mongoid'
 gem 'bson_ext'
 gem 'haml'
 gem 'jquery-rails'
