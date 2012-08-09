@@ -67,7 +67,8 @@ module IDya
 
     # This will allow you to use the rails generate model command with MongoMapper.
     config.generators do |g|
-      g.orm :mongo_mapper
+      g.orm :mongoid
+      g.template_engine :haml
     end
   end
 end
