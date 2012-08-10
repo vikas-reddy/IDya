@@ -1,7 +1,18 @@
 - @ideas.each do |idea|
-  .well
+  .well.idea
     %b= link_to idea.title, idea
     %div= idea.description
+    .bottom-row.row-fluid
+      .pull-left
+        0 votes
+      .pull-right
+        .owner
+          By:
+          = link_to idea.username, user_path(idea.username)
+          |
+        .time
+          Created:
+          = idea.created_at.to_date
 
 .pagination.pagination-centered
   = paginate @ideas
