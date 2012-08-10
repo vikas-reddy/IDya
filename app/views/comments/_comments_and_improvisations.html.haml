@@ -1,12 +1,12 @@
 %ul{:class => 'nav nav-tabs'}
   %li.active
-    %a{:href => '#comments', 'data-toggle' => 'tab'} Comments
-  %li
     %a{:href => '#improvisations', 'data-toggle' => 'tab'} Improvisations
+  %li
+    %a{:href => '#comments', 'data-toggle' => 'tab'} Comments
 
 .hero-unit
   .tab-content
-    %div#comments{:class => 'tab-pane fade active in'}
-      = render '/comments/comments_list'
-    %div#improvisations{:class => 'tab-pane fade'}
+    %div#improvisations{:class => 'tab-pane fade active in'}
       = render 'comments/improvisations_list'
+    %div#comments{:class => 'tab-pane fade'}
+      = render '/comments/comments_list'
