@@ -8,7 +8,7 @@ class Idea
   field :username, type: String
 
   has_many :improvisations
-  has_many :votes, dependent: :delete
+  embeds_many :votes
   embeds_many :comments, as: :commentable
   embeds_many :ratings, as: :ratable
 

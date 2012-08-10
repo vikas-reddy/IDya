@@ -8,6 +8,4 @@
 %p
   %b User:
   = @idea.username
-= link_to 'Edit', edit_idea_path(@idea)
-|
-\#{link_to 'Back', ideas_path}
+= render 'comments/comments_and_improvisations'
