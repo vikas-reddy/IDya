@@ -3,6 +3,9 @@ class Idea
   include Mongoid::Document
   include Mongoid::Timestamps
 
+# Validations
+	validates :title, presence: true, message: t('idea.title_presence')
+	validates :description, presence: true, message: t('idea.description_presence')
   field :title, type: String
   field :description, type: String
   field :username, type: String
