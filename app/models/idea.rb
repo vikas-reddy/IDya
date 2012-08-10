@@ -10,4 +10,5 @@ class Idea
   has_many :improvisations
   embeds_many :comments, as: :commentable
   embeds_many :ratings, as: :ratable
+  has_many :votes, dependent: :delete
 end
