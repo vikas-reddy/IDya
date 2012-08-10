@@ -1,2 +1,2 @@
-= form_tag(search_ideas_path, method: :get, :class => "navbar-form pull-right") do
-	= text_field_tag 'q', params[:q], :class => 'placeholder'
+= form_tag(search_ideas_path, method: :get, :class => "navbar-search pull-right") do
+	= text_field_tag 'q', params[:q], :class => 'placeholder', :placeholder => 'Search Ideas'
