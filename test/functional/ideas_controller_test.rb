@@ -46,4 +46,30 @@ class IdeasControllerTest < ActionController::TestCase
 
     assert_redirected_to ideas_path
   end
+
+	# tests for ideas#search
+	test "should get search" do
+		get :search, q: "asdf"
+		assert_response :success
+	end
+	
+	test "should return empty results" do
+		get :search, q: "pleasedontcreateanypostwiththisstringplesepleasepleasepleasepleaserfdklfj;alsdfjlksdjfljsdflkjsdflksdjf;lksadjf;lsdkjf;lsadkfj"
+		assert_response :success
+		assert_equal flash[:notice], I18n.t(:no_results)
+		assert assigns[:ideas].empty?
+	end
+	test "should not search for empty strings" do
+		get :search, q: " "
+		assert_response :success
+		assert_equal flash[:notice], I18n.t(:empty_search)
+		assert_nil assigns[:ideas]
+	end
+
+	test "should search for valid string" do
+		get :search, q: "searchable"
+		assert_response :success
+		assert_nil flash[:notice]
+		assert_not_nil assigns[:ideas]
+	end
 end

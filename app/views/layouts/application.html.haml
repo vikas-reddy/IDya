@@ -32,9 +32,7 @@
             %ul.nav.pull-left
               %li= link_to 'Home', home_page_path
             %ul.nav.pull-right
-              %li
-                %form.navbar-form.pull-right{action: root_path}
-                  %input.span3{type: :text, name: 'q', placeholder: 'Search Ideas'}
+              %li= render 'shared/search'
           / /.nav-collapse
     .container
       .hero-unit

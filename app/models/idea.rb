@@ -9,6 +9,15 @@ class Idea < MongoRecord
 	validates :description, presence: true
 	validates :username, presence: true
 
+	# Provide the fields for full text search using mongoid_search
+	# Let's also include username, allowing user to search ideas by ldpa_id of the owner
+	search_in :title, :description, :username
+
+	# set per_page for Ideas
+	def self.per_page
+		5
+	end
+
   field :title, type: String
   field :description, type: String
   field :username, type: String

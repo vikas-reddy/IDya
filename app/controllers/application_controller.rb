@@ -17,4 +17,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+=begin #not necessary
+	protected
+	def apply_validations
+		@valid_request = true
+		validation_method = "#{params[:controller]}_#{params[:action]}_validation"
+		if respond_to?(validation_method)
+			send validation_method
+		end
+	end
+=end
 end
