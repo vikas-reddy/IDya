@@ -1,0 +1,8 @@
+- @ideas.each do |idea|
+  .well
+    %b= idea.title
+    %div
+      = idea.description
+
+.pagination.pagination-centered
+  = paginate @ideas

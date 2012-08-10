@@ -6,9 +6,8 @@
       %a.btn.btn-primary{href: new_user_idea_path(current_user)}
         %i.icon-plus.icon-white
         New Idea
-=select_tag "filter by", options_for_select(filters, params[:criteria]), id: 'ideas_filter'
-%div.well.ideas
-  = render :partial => '/ideas/ideas', :locals => {:ideas => @ideas}
 
-.pagination.pagination-centered
-  = paginate @ideas
+= select_tag "filter by", options_for_select(filters, params[:criteria]), id: 'ideas_filter'
+
+%div.ideas
+  = render 'list'

@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   # GET /ideas.json
   def index
     params[:criteria] ||= :today
-    @ideas = case params[:criteria]
+    @ideas = case params[:criteria].to_sym
              when :today, nil
                Idea.today
              when :last_week
@@ -14,10 +14,10 @@ class IdeasController < ApplicationController
                Idea.scoped
              end
 
-    @ideas = @ideas.page(params[:page] || 1).per(2)
+    @ideas = @ideas.page(params[:page] || 1).per(5)
 
     if request.xhr?
-       render :partial => '/ideas/ideas', :locals => {:ideas => @ideas}
+       render :partial => 'ideas/list'
     else
       respond_to do |format|
         format.html # index.html.erb
