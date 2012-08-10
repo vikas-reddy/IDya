@@ -7,7 +7,16 @@
         %i.icon-plus.icon-white
         New Idea
 
-= select_tag "filter by", options_for_select(filters, params[:criteria]), id: 'ideas_filter'
+%form.form-inline.row-fluid
+  .span6.center
+    = label_tag 'filter_by', 'Filter By'
+    = select_tag 'filter_by', options_for_select(filter_criteria, params[:filter_by]), class: 'ideas-filter', id: 'ideas-filter-by'
+  .span6.center
+    = label_tag 'order_by', 'Sort By'
+    = select_tag 'order_by', options_for_select(order_criteria, params[:order_by]), class: 'ideas-filter', id: 'ideas-order-by'
 
-%div.ideas
+#ideas-progress.progress.progress-striped.active.hide
+  .bar{style: 'width: 100%'}
+
+#ideas-list
   = render 'list'

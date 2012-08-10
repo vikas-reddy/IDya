@@ -1,8 +1,7 @@
 - @ideas.each do |idea|
   .well
-    %b= idea.title
-    %div
-      = idea.description
+    %b= link_to idea.title, idea
+    %div= idea.description
 
 .pagination.pagination-centered
   = paginate @ideas

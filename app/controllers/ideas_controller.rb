@@ -2,19 +2,10 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    params[:criteria] ||= :today
-    @ideas = case params[:criteria].to_sym
-             when :today, nil
-               Idea.today
-             when :last_week
-               Idea.last_week
-             when :last_month
-               Idea.last_month
-             else # All
-               Idea.scoped
-             end
+    params[:filter_by] ||= :today
+    params[:order_by]   ||= :created_date
 
-    @ideas = @ideas.page(params[:page] || 1).per(5)
+    @ideas = Idea.filter(params[:filter_by]).page(params[:page] || 1).per(5)
 
     if request.xhr?
        render :partial => 'ideas/list'
