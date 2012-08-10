@@ -3,16 +3,20 @@ class Vote
   field :idea_id, type: Integer
   field :for_against, type: Boolean
   field :username, type: String
-
-  belongs_to :idea
+  
+  embedded_in :idea, :inverse_of => :votes 
 
   # Votes related to "for"
-  def forVotes
-    where(for_against: true)
+  def self.for_votes
+    where(for_against: true).count
   end
 
   # Votes related to "against"
-  def againstVotes
-    where(for_against: false)
+  def self.against_votes
+    where(for_against: false).count
+  end
+
+  def self.voted?(username)
+    where(username: username)? true : false
   end
 end
