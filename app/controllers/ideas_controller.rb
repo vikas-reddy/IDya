@@ -2,6 +2,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
+    params[:criteria] ||= :today
     @ideas = case params[:criteria]
              when :today, nil
                Idea.today
@@ -13,11 +14,15 @@ class IdeasController < ApplicationController
                Idea.scoped
              end
 
-    @ideas = @ideas.page(params[:page] || 1).per(1)
+    @ideas = @ideas.page(params[:page] || 1).per(2)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ideas }
+    if request.xhr?
+       render :partial => '/ideas/ideas', :locals => {:ideas => @ideas}
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @ideas }
+      end
     end
   end
 
