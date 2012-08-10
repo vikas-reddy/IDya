@@ -10,7 +10,7 @@
   = @rating.rated
 %p
   %b User:
-  = @rating.user_id
+  = @rating.username
 = link_to 'Edit', edit_rating_path(@rating)
 |
 \#{link_to 'Back', ratings_path}

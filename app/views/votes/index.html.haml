@@ -13,7 +13,7 @@
       %td= vote.id
       %td= vote.idea_id
       %td= vote.for_against
-      %td= vote.user_id
+      %td= vote.username
       %td= link_to 'Show', vote
       %td= link_to 'Edit', edit_vote_path(vote)
       %td= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' }

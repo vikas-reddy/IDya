@@ -13,7 +13,7 @@
       %td= idea.id
       %td= idea.title
       %td= idea.description
-      %td= idea.user_id
+      %td= idea.username
       %td= link_to 'Show', idea
       %td= link_to 'Edit', edit_idea_path(idea)
       %td= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }
