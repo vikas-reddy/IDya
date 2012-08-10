@@ -1,7 +1,13 @@
-class Idea
+class Idea < MongoRecord
   FILTERS = ["Today", "Last Week", "Last Month"]
-  include Mongoid::Document
-  include Mongoid::Timestamps
+	
+	# allow only following attributes to be mass assigned from Idea.new(params[:idea])
+	attr_accessible :title, :description
+
+	# Validations
+	validates :title, presence: true
+	validates :description, presence: true
+	validates :username, presence: true
 
   field :title, type: String
   field :description, type: String

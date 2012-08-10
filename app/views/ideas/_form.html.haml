@@ -14,10 +14,6 @@
   .field
     = f.label :description
     %br/
-    = f.text_field :description
-  .field
-    = f.label :username
-    %br/
-    = f.number_field :username
+    = f.text_area :description, rows: 4
   .actions
     = f.submit
