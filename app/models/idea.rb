@@ -1,16 +1,20 @@
 class Idea < MongoRecord
-	
+  
   field :title, type: String
   field :description, type: String
   field :username, type: String
 
-	# Mass assignment only for title and description
-	attr_accessible :title, :description
+  # Mass assignment only for title and description
+  attr_accessible :title, :description
 
-	# Validations
-	validates :title, presence: true
-	validates :description, presence: true
-	validates :username, presence: true
+  # Validations
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :username, presence: true
+
+  # Provide the fields for full text search using mongoid_search
+  # Let's also include username, allowing user to search ideas by ldpa_id of the owner
+  search_in :title, :description, :username
 
   has_many :improvisations
   embeds_many :votes
@@ -29,5 +33,10 @@ class Idea < MongoRecord
     filter_by = :scoped unless [:today, :last_week, :last_month].include?(filter_by)
     
     self.send(filter_by)
+  end
+
+  # set per_page for Ideas
+  def self.per_page
+    5
   end
 end

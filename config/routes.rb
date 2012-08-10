@@ -5,7 +5,11 @@ IDya::Application.routes.draw do
 
   resources :votes
 
-  resources :ideas
+  resources :ideas do
+		collection do
+			get 'search'
+		end
+	end
 
   resources :users do
     resources :ideas

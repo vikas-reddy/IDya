@@ -11,3 +11,9 @@ two:
   title: MyString
   description: 
   user_id: 1
+
+searchable_idea:
+  id: 1
+  title: searchable
+  description: this is a searchable idea
+  user_id: 1
