@@ -10,4 +10,6 @@ class Idea
   has_many :improvisations
   embeds_many :comments, as: :commentable
   embeds_many :ratings, as: :ratable
+
+  scope :today, lambda { where(created_at: (Time.now.beginning_of_day)..(Time.now.end_of_day)) }
 end

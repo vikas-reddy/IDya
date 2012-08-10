@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       # stored in a session
       session[:user] = User.new(params[:username])
 
-      redirect_to root_path, alert: 'Successfully signed in'
+      redirect_to ideas_path, alert: 'Successfully signed in'
     else
       flash.now[:error] = 'Invalid username and password'
       render action: :new

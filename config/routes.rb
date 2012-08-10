@@ -7,7 +7,9 @@ IDya::Application.routes.draw do
 
   resources :ideas
 
-  resources :users
+  resources :users do
+    resources :ideas
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

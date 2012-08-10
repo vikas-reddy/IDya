@@ -33,4 +33,7 @@ class User
     Rating.where(username: ldap_name)
   end
 
+  def to_s
+    @ldap_name
+  end
 end

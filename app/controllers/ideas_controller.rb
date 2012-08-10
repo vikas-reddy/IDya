@@ -2,7 +2,18 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = case params[:criteria]
+             when :today, nil
+               Idea.today
+             when :last_week
+               Idea.last_week
+             when :last_month
+               Idea.last_month
+             else # All
+               Idea.scoped
+             end
+
+    @ideas = @ideas.page(params[:page] || 1).per(1)
 
     respond_to do |format|
       format.html # index.html.erb

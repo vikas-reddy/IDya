@@ -1,19 +1,18 @@
-%h1 Listing ideas
-%table
-  %tr
-    %th Title
-    %th Description
-    %th User
-    %th
-    %th
-    %th
-  - @ideas.each do |idea|
-    %tr
-      %td= idea.title
-      %td= idea.description
-      %td= idea.username
-      %td= link_to 'Show', idea
-      %td= link_to 'Edit', edit_idea_path(idea)
-      %td= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Idea', new_idea_path
+%legend
+  .row-fluid
+    .pull-left
+      %h2 Ideas
+    .pull-right
+      %a.btn.btn-primary{href: new_user_idea_path(current_user)}
+        %i.icon-plus.icon-white
+        New Idea
+
+
+- @ideas.each do |idea|
+  .well
+    %b= idea.title
+    %div
+      = idea.description
+
+.pagination.pagination-centered
+  = paginate @ideas
