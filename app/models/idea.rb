@@ -1,10 +1,16 @@
-class Idea
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Idea < MongoRecord
+	
   field :title, type: String
   field :description, type: String
   field :username, type: String
+
+	# Mass assignment only for title and description
+	attr_accessible :title, :description
+
+	# Validations
+	validates :title, presence: true
+	validates :description, presence: true
+	validates :username, presence: true
 
   has_many :improvisations
   embeds_many :votes
