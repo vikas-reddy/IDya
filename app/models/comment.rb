@@ -7,5 +7,5 @@ class Comment
   field :body, type: String
   field :username, type: String
 
-  belongs_to :commentable, polymorphic: true
+  embeds_in :commentable, polymorphic: true
 end
