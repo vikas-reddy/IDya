@@ -13,7 +13,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "/"} IDya
+          %a.brand{:href => home_page_path} IDya
           .btn-group.pull-right
             %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.icon-user
@@ -24,12 +24,13 @@
               %span.caret
             %ul.dropdown-menu
               - if logged_in?
+                %li= link_to 'Profile', user_path(current_user)
                 %li= link_to 'Sign Out', signout_path, method: :delete
               - else
                 %li= link_to 'Sign In', signin_path
           .nav-collapse
             %ul.nav.pull-left
-              %li= link_to 'Home', root_path
+              %li= link_to 'Home', home_page_path
             %ul.nav.pull-right
               %li
                 %form.navbar-form.pull-right{action: root_path}
