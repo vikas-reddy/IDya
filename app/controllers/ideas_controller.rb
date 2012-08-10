@@ -43,25 +43,10 @@ class IdeasController < ApplicationController
     end
   end
 
+=begin #edit and update are not required
   # GET /ideas/1/edit
   def edit
     @idea = Idea.find(params[:id])
-  end
-
-  # POST /ideas
-  # POST /ideas.json
-  def create
-    @idea = Idea.new(params[:idea])
-
-    respond_to do |format|
-      if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
-        format.json { render json: @idea, status: :created, location: @idea }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /ideas/1
@@ -79,6 +64,23 @@ class IdeasController < ApplicationController
       end
     end
   end
+=end
+  # POST /ideas
+  # POST /ideas.json
+  def create
+    @idea = Idea.new(params[:idea])
+		@idea.username = current_user.ldap_name
+    respond_to do |format|
+      if @idea.save
+        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.json { render json: @idea, status: :created, location: @idea }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @idea.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /ideas/1
   # DELETE /ideas/1.json

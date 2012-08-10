@@ -1,13 +1,7 @@
 %p#notice= notice
 %p
-  %b Title:
-  = @idea.title
+  %h2= @idea.title
 %p
-  %b Description:
   = @idea.description
-%p
-  %b User:
-  = @idea.username
-= link_to 'Edit', edit_idea_path(@idea)
-|
-\#{link_to 'Back', ideas_path}
+%hr
+%p by #{@idea.username}

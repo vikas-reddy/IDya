@@ -1,11 +1,12 @@
-class Idea
+class Idea < MongoRecord
+	# allow only following attributes to be mass assigned from Idea.new(params[:idea])
+	attr_accessible :title, :description
 
-  include Mongoid::Document
-  include Mongoid::Timestamps
+	# Validations
+	validates :title, presence: true
+	validates :description, presence: true
+	validates :username, presence: true
 
-# Validations
-	validates :title, presence: true, message: t('idea.title_presence')
-	validates :description, presence: true, message: t('idea.description_presence')
   field :title, type: String
   field :description, type: String
   field :username, type: String

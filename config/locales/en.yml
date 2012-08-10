@@ -3,7 +3,3 @@
 
 en:
   hello: "Hello world"
-
-	idea:
-		title_presence: "can't be blank"
-		description_presence: "can't be blank"

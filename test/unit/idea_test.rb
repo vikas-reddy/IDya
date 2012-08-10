@@ -10,6 +10,8 @@ class IdeaTest < ActiveSupport::TestCase
 		idea = Idea.new
 		assert !idea.save
 
-		assert_includes idea.errors.on(:title), t('idea.title_presence')
-		assert_includes idea.errors.on(:description), t('idea.description_presence')
+		assert_includes idea.errors[:title], I18n.t('errors.messages.blank')
+		assert_includes idea.errors[:description], I18n.t('errors.messages.blank')
+		assert_includes idea.errors[:username], I18n.t('errors.messages.blank')
+	end
 end
