@@ -1,7 +1,6 @@
 %h1 Listing votes
 %table
   %tr
-    %th Id
     %th Idea
     %th For against
     %th User
@@ -10,7 +9,6 @@
     %th
   - @votes.each do |vote|
     %tr
-      %td= vote.id
       %td= vote.idea_id
       %td= vote.for_against
       %td= vote.username

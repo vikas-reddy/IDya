@@ -1,7 +1,6 @@
 %h1 Listing ideas
 %table
   %tr
-    %th Id
     %th Title
     %th Description
     %th User
@@ -10,7 +9,6 @@
     %th
   - @ideas.each do |idea|
     %tr
-      %td= idea.id
       %td= idea.title
       %td= idea.description
       %td= idea.username

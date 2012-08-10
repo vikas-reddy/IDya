@@ -8,10 +8,6 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.label :id
-    %br/
-    = f.number_field :id
-  .field
     = f.label :ldap_username
     %br/
     = f.text_field :ldap_username
