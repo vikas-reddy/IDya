@@ -4,7 +4,7 @@
     %div= idea.description
     .bottom-row.row-fluid
       .pull-left
-        = format_votes(idea)
+        = render :partial => 'votes/votes_count' , :locals => {:idea => idea}
       .pull-right
         .owner
           By:

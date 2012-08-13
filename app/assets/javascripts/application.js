@@ -13,3 +13,52 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function() {
+
+      alertInfo();
+
+      $(".vote-for").on('click',function(e){         
+          voteIDya({
+                     idea_id: $("#idea_id").val(),
+                     vote: {for_against: 1}
+                })
+        });
+        $(".vote-against").on('click',function(e){
+          voteIDya({
+                     idea_id: $("#idea_id").val(),
+                     vote: {for_against: 0}
+                })
+        });
+});
+
+
+function voteIDya(data){
+    $.ajax({
+                type: 'POST',
+                url: '/votes',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    if(data.for_against){
+                        $('.vote-for-count').html(parseInt($('.vote-for-count').html())+1);
+                     }
+                     else {
+                          $('.vote-against-count').html(parseInt($('.vote-for-count').html())+1);
+                     }
+                    $('.your-vote').html("");
+                    $('.hero-unit').prepend("<div class='alert alert-success'>Thanks! Your vote was successfully sent.</div>")
+                    alertInfo();
+                }
+            });
+}
+
+function alertInfo() { 
+  setTimeout(hideFlashMessages, 3500);
+}
+
+function hideFlashMessages() {
+    $('.alert').slideUp(200);
+}
+

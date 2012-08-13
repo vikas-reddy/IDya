@@ -1,0 +1,8 @@
+.votes.pull-right
+  .voted
+    .over-all-votes-for.btn.btn-success.btn-mini
+      .icon-thumbs-up.icon-white
+      %span{:class => 'vote-for-count'}= idea.votes.for_votes
+    .over-all-votes-against.btn.btn-danger.btn-mini
+      .icon-thumbs-down.icon-white
+      %span{:class => 'vote-against-count'}= idea.votes.against_votes

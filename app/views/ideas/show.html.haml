@@ -1,8 +1,11 @@
-%p#notice= notice
 %p
   %h2= @idea.title
 %p
+  = render 'votes/form'
+%p
   = @idea.description
+.pull-right
+  = render :partial => 'votes/votes_count' , :locals => {:idea => @idea}
 %hr
 %p by #{@idea.username}
 = render 'comments/comments_and_improvisations'

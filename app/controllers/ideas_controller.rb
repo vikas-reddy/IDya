@@ -2,6 +2,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
 	#before_filter :apply_validations
+  respond_to :html, :json, :xml
   def index
     params[:filter_by] ||= :today
     params[:order_by]  ||= :created_date
@@ -11,10 +12,7 @@ class IdeasController < ApplicationController
     if request.xhr?
        render :partial => 'ideas/list'
     else
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @ideas }
-      end
+      respond_with(@users)
     end
   end
 	def search
@@ -24,31 +22,20 @@ class IdeasController < ApplicationController
 		else
 			flash.now[:notice] = t(:empty_search)
 		end
-		respond_to do |format|
-			format.html # search.html.haml
-			format.json { render json: @ideas }
-		end
+		respond_with(@ideas)
 	end
   # GET /ideas/1
   # GET /ideas/1.json
   def show
     @idea = Idea.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @idea }
-    end
+    respond_with(@idea)
   end
 
   # GET /ideas/new
   # GET /ideas/new.json
   def new
     @idea = Idea.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @idea }
-    end
+    respond_with(@idea)
   end
 
   # POST /ideas

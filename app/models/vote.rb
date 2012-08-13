@@ -19,7 +19,7 @@ class Vote
     where(for_against: false).count
   end
 
-  def self.voted?(username)
-    where(username: username)? true : false
+  def self.voted?(username)   
+    where(username: username).blank? ? false : true
   end
 end
