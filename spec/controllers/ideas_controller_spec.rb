@@ -1,18 +1,44 @@
 require 'spec_helper'
 
 describe IdeasController do
-	it "should be invalid" do
-		nil_idea = Idea.new
-		empty_string = ""
-		empty_idea = Idea.new(title: empty_idea, description: empty_string, username: empty_string)
 
-		blank_error_message = I18n.t('errors.messages.blank')
+	describe "search" do
+		it "should get search page" do
+			get :search, q: "asdf"
+			response.should be_success
+		end
+		
+		it "should return empty results" do
+			get :search, q: "pleasedontcreateanypostwiththisstringplesepleasepleasepleasepleaserfdklfj;alsdfjlksdjfljsdflkjsdflksdjf;lksadjf;lsdkjf;lsadkfj"
+			response.should be_success
+			flash[:notice].should equal I18n.t(:no_results)
+			p assigns[:ideas]
+			assigns[:ideas].should be_empty
+		end
 
-		[nil_idea, empty_idea].each do |idea|
-			idea.save.should equal false
-			idea.errors[:title].should include(blank_error_message)
-			idea.errors[:description].should include(blank_error_message)
-			idea.errors[:username].should include(blank_error_message)
-		end	
+		it "should not search for empty strings" do
+			get :search, q: " "
+			response.should be_success
+			flash[:notice].should equal I18n.t(:empty_search)
+			assigns[:ideas].should be_nil #equal nil
+		end
+
+		it "should search for valid string" do
+			get :search, q: "searchable"
+			response.should be_success
+			flash[:notice].should equal nil
+			assigns[:ideas].should_not equal nil
+			before_size = assigns[:ideas].size
+			
+			create(:idea, title: 'searchable')
+
+			get :search, q: "searchable"
+			response.should be_success
+			flash[:notice].should equal nil
+			assigns[:ideas].should_not equal nil
+			after_size = assigns[:ideas].size
+
+			(before_size+1).should == after_size
+		end
 	end
 end
