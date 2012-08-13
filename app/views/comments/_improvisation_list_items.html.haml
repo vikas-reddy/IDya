@@ -1,4 +1,4 @@
 #improvisations_list
-	- @improvisations.each do |imp|
+	- !@improvisations.blank? && @improvisations.each do |imp|
 		.well{:id => "#{imp.id}"}
 			= "#{imp.content}"
