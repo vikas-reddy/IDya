@@ -7,4 +7,7 @@ class Rating
   field :username, type: String
 
   embedded_in :ratable, polymorphic: true
+
+  validates :score, presence: true, numericality: true, inclusion: {in: 1..5}
+  validates :username, presence: true
 end

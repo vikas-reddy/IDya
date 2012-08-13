@@ -4,7 +4,7 @@ class IdeasController < ApplicationController
 	#before_filter :apply_validations
   def index
     params[:filter_by] ||= :today
-    params[:order_by]   ||= :created_date
+    params[:order_by]  ||= :created_date
 
     @ideas = Idea.filter(params[:filter_by]).page(params[:page] || 1).per(5)
 

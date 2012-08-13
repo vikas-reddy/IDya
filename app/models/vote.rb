@@ -6,6 +6,9 @@ class Vote
   
   embedded_in :idea, :inverse_of => :votes 
 
+  validates :username, presence: true
+  validates :for_against, presence: true
+
   # Votes related to "for"
   def self.for_votes
     where(for_against: true).count
