@@ -8,4 +8,36 @@
   = render :partial => 'votes/votes_count' , :locals => {:idea => @idea}
 %hr
 %p by #{@idea.username}
-= render 'comments/comments_and_improvisations'
+
+.header
+  %table{:style => "float: right;"}
+    %tr
+      %td
+        = link_to 'Home', root_path
+      %td
+        &nbsp;
+      %td
+        = link_to 'Log Out', signout_path, method: :delete
+      %td
+        &nbsp;
+  .hero-unit
+    %table
+      %tr
+        %td
+          &nbsp;
+        %td{:style => "float:right;"}
+          %label{:for => "input01", :class => "control-label"}
+            ="Title"
+        %td
+          &nbsp;
+          %input{:type => "text", :id => "input01", :class => "input", :value => "#{@idea.title}"}
+      %tr
+        %td
+          &nbsp;
+        %td{:style => "float:right;"}
+          %label{:class => "control-label"}
+            ="Idea Description"
+        %td
+          &nbsp;
+          %textarea{:id => "textarea", :class => "input-xlarge"}="#{@idea.description}"
+  = render 'comments/comments_and_improvisations'
