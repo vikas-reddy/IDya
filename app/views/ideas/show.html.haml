@@ -7,7 +7,7 @@
         &nbsp;
       - if current_user.to_s == @idea.username
         %td
-          = link_to 'delete', @idea, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Delete', @idea, method: :delete, data: { confirm: 'Are you sure?' }
           &nbsp;
       %td
         = link_to 'Log Out', signout_path, method: :delete
