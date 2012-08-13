@@ -1,0 +1,9 @@
+.votes{:style => "float: right;"}
+  .voted{:style => "padding-bottom:5px;"}
+    Voted :
+    .over-all-votes-for.btn.btn-success
+      .icon-thumbs-up.icon-white
+      %span{:class => 'vote-for-count'}=idea.votes.for_votes
+    .over-all-votes-against.btn.btn-danger
+      .icon-thumbs-down.icon-white
+      %span{:class => 'vote-against-count'}=idea.votes.against_votes
