@@ -17,6 +17,14 @@ class User
     self.new(username)
   end
 
+  def persisted?
+    false
+  end
+
+  def id
+    @ldap_name
+  end
+
   def ideas
     Idea.where(username: ldap_name)
   end
