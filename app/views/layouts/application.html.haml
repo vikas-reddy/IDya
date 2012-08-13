@@ -13,7 +13,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => home_page_path} IDya
+          %a.brand{:href => root_path} IDya
           .btn-group.pull-right
             %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.icon-user
@@ -30,7 +30,7 @@
                 %li= link_to 'Sign In', signin_path
           .nav-collapse
             %ul.nav.pull-left
-              %li= link_to 'Home', home_page_path
+              %li= link_to 'Home', root_path
             %ul.nav.pull-right
               %li= render 'shared/search'
           / /.nav-collapse
