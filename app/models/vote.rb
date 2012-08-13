@@ -6,8 +6,10 @@ class Vote
   
   embedded_in :idea, :inverse_of => :votes 
 
+  
+  
   validates :username, presence: true
-  validates :for_against, presence: true
+  
 
   # Votes related to "for"
   def self.for_votes
@@ -22,4 +24,6 @@ class Vote
   def self.voted?(username)   
     where(username: username).blank? ? false : true
   end
+
+  
 end
