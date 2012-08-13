@@ -36,7 +36,8 @@
           / /.nav-collapse
     .container
       .hero-unit
-        = render 'shared/flashes'
+        .notice-area
+          = render 'shared/flashes'
         = yield
       %hr/
       %footer
