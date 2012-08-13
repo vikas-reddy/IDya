@@ -19,6 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
 gem 'mongoid'
 gem 'bson_ext'
 gem 'haml'
@@ -27,6 +28,29 @@ gem 'net-ldap'
 gem 'wirble'
 gem 'kaminari'
 gem 'mongoid_search'
+
+
+## Gems for development and test environment
+#group :development, :test do
+	#gem 'rspec-rails', '2.10.0'
+	#gem 'machinist', '>= 2.0.0'
+	gem 'faker', '1.0.1'
+	#gem 'machinist_mongo', :git => 'git://github.com/nmerouze/machinist_mongo.git', branch: 'machinist2'
+#end
+## Gems for test environment
+#group :test do
+	#gem 'capybara', '1.1.2'
+#end
+
+group :development, :test do
+	gem 'capybara'
+	gem 'rspec-rails', '>= 2.0.0.beta.12'
+	gem 'factory_girl'
+	gem 'mongoid-rspec', :require => false
+end
+group :test do
+	gem 'cucumber-rails', require: false
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
