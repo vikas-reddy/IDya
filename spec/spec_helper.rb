@@ -17,7 +17,7 @@ RSpec.configure do |config|
 		#DatabaseCleaner.strategy = :truncation
 		#DatabaseCleaner.orm = "mongoid"
 	#end
-
+  config.include FactoryGirl::Syntax::Methods
 	#config.before(:each) do
 		#DatabaseCleaner.clean
 	#end

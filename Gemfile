@@ -46,6 +46,7 @@ group :development, :test do
 	gem 'capybara'
 	gem 'rspec-rails', '>= 2.0.0.beta.12'
 	gem 'factory_girl'
+	gem 'factory_girl_rails'
 	gem 'mongoid-rspec', :require => false
 end
 group :test do
