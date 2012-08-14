@@ -1,8 +1,8 @@
 .votes
   %span.votes-for
     %i.icon-thumbs-up
-    %span{:class => 'vote-for-count'}= idea.votes.for_votes
+    %span{:class => 'vote-for-count'}= idea.for_vote_count
   &nbsp;
   %span.votes-against
     %i.icon-thumbs-down
-    %span{:class => 'vote-against-count'}= idea.votes.against_votes
+    %span{:class => 'vote-against-count'}= idea.against_vote_count
