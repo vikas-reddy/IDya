@@ -29,7 +29,6 @@ gem 'wirble'
 gem 'kaminari'
 gem 'mongoid_search'
 
-
 ## Gems for development and test environment
 #group :development, :test do
 	#gem 'rspec-rails', '2.10.0'
@@ -63,6 +62,9 @@ end
 
 # Deploy with Capistrano
 # gem 'capistrano'
+
+#Gravatar 
+gem 'gravatar_image_tag'
 
 # To use debugger
 # gem 'debugger'
