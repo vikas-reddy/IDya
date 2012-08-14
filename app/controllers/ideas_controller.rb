@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
     if request.xhr?
        render :partial => 'ideas/list'
     else
-      respond_with(@users)
+      respond_with(@ideas)
     end
   end
 
