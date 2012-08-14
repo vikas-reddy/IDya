@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   #before_filter :apply_validations
-
+  before_filter :login_required, :except => [:index, :search, :show]
   # GET /ideas
   # GET /ideas.json
   respond_to :html, :json, :xml
@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
     if request.xhr?
        render :partial => 'ideas/list'
     else
-      respond_with(@users)
+      respond_with(@ideas)
     end
   end
 

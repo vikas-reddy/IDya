@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_filter :login_required
   # POST /votes
   # POST /votes.json
   def create

@@ -3,7 +3,7 @@ IDya::Application.routes.draw do
 
   resources :ratings
 
-  resources :votes
+  resources :votes, :only => [:create]
 
   resources :ideas do
 		collection do
