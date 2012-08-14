@@ -48,6 +48,7 @@ group :development, :test do
 	gem 'factory_girl'
 	gem 'factory_girl_rails'
 	gem 'mongoid-rspec', :require => false
+  gem 'rr'
 end
 group :test do
 	gem 'cucumber-rails', require: false

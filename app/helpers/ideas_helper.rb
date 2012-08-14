@@ -10,7 +10,7 @@ module IdeasHelper
 		if valid && ideas.empty?
 			t(:no_results)
 		elsif valid
-			render 'list' if valid
+			render('list', :ideas => ideas)
 		end
 	end
 end

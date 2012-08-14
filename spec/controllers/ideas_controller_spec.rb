@@ -11,15 +11,13 @@ describe IdeasController do
 		it "should return empty results" do
 			get :search, q: "pleasedontcreateanypostwiththisstringplesepleasepleasepleasepleaserfdklfj;alsdfjlksdjfljsdflkjsdflksdjf;lksadjf;lsdkjf;lsadkfj"
 			response.should be_success
-			flash[:notice].should equal I18n.t(:no_results)
-			p assigns[:ideas]
 			assigns[:ideas].should be_empty
 		end
 
 		it "should not search for empty strings" do
 			get :search, q: " "
 			response.should be_success
-			flash[:notice].should equal I18n.t(:empty_search)
+			flash[:notice].should == I18n.t(:empty_search)
 			assigns[:ideas].should be_nil #equal nil
 		end
 
