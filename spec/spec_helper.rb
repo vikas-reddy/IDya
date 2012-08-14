@@ -7,7 +7,7 @@ require 'mongoid-rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/
-# Dir[Rails.root.join("spec/support/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 # require blueprints
 # require File.join(File.dirname(__FILE__), 'support', 'blueprints')
