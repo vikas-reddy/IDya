@@ -3,6 +3,7 @@ FactoryGirl.define do
 		title { Faker::Lorem.sentence }
 		description { Faker::Lorem.paragraph }
 		username { Faker::Internet.user_name }
+    created_at { DateTime.now }
 	end
 	factory :nil_idea, :class => Idea do
 		title nil
