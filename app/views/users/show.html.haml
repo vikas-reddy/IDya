@@ -2,7 +2,7 @@
   .row-fluid
     .pull-left
       %h2= @user.full_name
-      =gravatar_image_tag(@user.email, :alt => @user.full_name)
+      =gravatar_image_tag(@user.email, :alt => @user.full_name, :class => 'thumbnail', :gravatar => { :size => 64 })
 
 .user-ideas
   = render 'ideas/list'
