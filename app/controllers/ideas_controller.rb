@@ -1,8 +1,10 @@
 class IdeasController < ApplicationController
+  #before_filter :apply_validations
+
   # GET /ideas
   # GET /ideas.json
-	#before_filter :apply_validations
   respond_to :html, :json, :xml
+
   def index
     params[:filter_by] ||= :today
     params[:order_by]  ||= :created_date
@@ -15,15 +17,19 @@ class IdeasController < ApplicationController
       respond_with(@users)
     end
   end
-	def search
-		@valid_search = params[:q] && !params[:q].strip.empty?
-		if @valid_search
-			@ideas = Idea.full_text_search(params[:q]).page(params[:page]).per(Idea.per_page)
-		else
-			flash.now[:notice] = t(:empty_search)
-		end
-		respond_with(@ideas)
-	end
+
+  # GET /ideas/search
+  # GET /ideas/search.json
+  def search
+    @valid_search = params[:q] && !params[:q].strip.empty?
+    if @valid_search
+      @ideas = Idea.full_text_search(params[:q]).page(params[:page]).per(Idea.per_page)
+    else
+      flash.now[:notice] = t(:empty_search)
+    end
+    respond_with(@ideas)
+  end
+
   # GET /ideas/1
   # GET /ideas/1.json
   def show

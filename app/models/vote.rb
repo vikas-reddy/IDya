@@ -4,22 +4,26 @@ class Vote
   field :for_against, type: Boolean
   field :username, type: String
   
-  embedded_in :idea, :inverse_of => :votes 
+  embedded_in :idea
 
   validates :username, presence: true
-  validates :for_against, presence: true
 
-  # Votes related to "for"
-  def self.for_votes
-    where(for_against: true).count
-  end
-
-  # Votes related to "against"
-  def self.against_votes
-    where(for_against: false).count
-  end
+  after_create :save_aggregates
 
   def self.voted?(username)   
     where(username: username).blank? ? false : true
+  end
+
+  def for_vote?
+    for_against == true
+  end
+
+  def save_aggregates
+    if for_vote?
+      idea.for_vote_count += 1
+    else
+      idea.against_vote_count += 1
+    end
+    idea.save
   end
 end

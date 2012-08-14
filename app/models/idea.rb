@@ -3,6 +3,8 @@ class Idea < MongoRecord
   field :title, type: String
   field :description, type: String
   field :username, type: String
+  field :for_vote_count, type: Integer, default: 0
+  field :against_vote_count, type: Integer, default: 0
 
   # Mass assignment only for title and description
   attr_accessible :title, :description
