@@ -5,19 +5,22 @@
         = link_to 'Home', home_page_path
       %td
         &nbsp;
-      - if current_user.to_s == @idea.username
+      - if (logged_in?) & (current_user.to_s == @idea.username)
         %td
           = link_to 'Delete', @idea, method: :delete, data: { confirm: 'Are you sure?' }
           &nbsp;
-      %td
-        = link_to 'Log Out', signout_path, method: :delete
-      %td
-        &nbsp;
+      - if logged_in?
+        %td
+          = link_to 'Log Out', signout_path, method: :delete
+        %td
+          &nbsp;
 %br
+%legend
 %p
   %h2= @idea.title
-%p
-  = render 'votes/form'
+- if logged_in?
+  %p
+    = render 'votes/form'
 %p
   = @idea.description
 .pull-right

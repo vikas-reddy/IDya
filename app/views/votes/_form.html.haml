@@ -1,5 +1,5 @@
 .votes{:style => "float: right;"}
-  - if !@idea.votes.voted?(current_user.to_s)
+  - if (current_user.to_s != @idea.username) & (!@idea.votes.voted?(current_user.to_s))
     .your-vote
       Your Vote :
       .vote-for.btn.btn-success

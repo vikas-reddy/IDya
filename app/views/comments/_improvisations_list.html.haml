@@ -1,20 +1,20 @@
 .improvisations_list
-	%table
-		%tr
-			%td
-				.add_improvisations
-					= "Add Improvements"
-					&nbsp;
-			%td
-				%textarea{:rows => "3",  :id => "improvisation-textarea", :class => "input-xlarge"}
-		%tr
-			%td
-				&nbsp;
-			%td
-				.button
-					%input{:type => "hidden", :id => "hidden_idea_id", :value => "#{@idea.id}"}
-					%a{:class => "btn btn-primary", :id => "post_improvisation"}
-						="Post Improvement"
-						
-	%br	
-	= render "comments/improvisation_list_items"
+  - if logged_in?
+    %table
+      %tr
+        %td
+          .add_improvisations
+            = "Add Improvements"
+            &nbsp;
+        %td
+          %textarea{:rows => "3",  :id => "improvisation-textarea", :class => "input-xlarge"}
+      %tr
+        %td
+          &nbsp;
+        %td
+          .button
+            %input{:type => "hidden", :id => "hidden_idea_id", :value => "#{@idea.id}"}
+            %a{:class => "btn btn-primary", :id => "post_improvisation"}
+              ="Post Improvement"
+  %br
+  = render "comments/improvisation_list_items"
