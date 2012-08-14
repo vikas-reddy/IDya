@@ -6,4 +6,7 @@
 .pagination .active a {
   color: #FFFFFF;
 }
+.gravatar{
+    display: inline-block;
+}
 
