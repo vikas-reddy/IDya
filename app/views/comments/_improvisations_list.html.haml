@@ -6,16 +6,15 @@
 					= "Add Improvements"
 					&nbsp;
 			%td
-				%textarea{:rows => "3",  :id => "textarea", :class => "input-xlarge"}
+				%textarea{:rows => "3",  :id => "improvisation-textarea", :class => "input-xlarge"}
 		%tr
 			%td
 				&nbsp;
 			%td
 				.button
-					%a{:class => "btn btn-primary", :href => ""}
+					%input{:type => "hidden", :id => "hidden_idea_id", :value => "#{@idea.id}"}
+					%a{:class => "btn btn-primary", :id => "post_improvisation"}
 						="Post Improvement"
 						
 	%br	
-	.well
-		= "First improvisation"
-
+	= render "comments/improvisation_list_items"

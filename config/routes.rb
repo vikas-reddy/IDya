@@ -9,6 +9,10 @@ IDya::Application.routes.draw do
 		collection do
 			get 'search'
 		end
+		member do 
+			post 'post_improvisation'
+			post 'post_comment'
+		end
 	end
 
   resources :users do

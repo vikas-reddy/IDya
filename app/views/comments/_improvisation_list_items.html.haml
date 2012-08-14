@@ -1,0 +1,4 @@
+#improvisations_list
+	- !@improvisations.blank? && @improvisations.each do |imp|
+		.well{:id => "#{imp.id}"}
+			= "#{imp.content}"

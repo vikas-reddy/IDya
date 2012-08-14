@@ -1,0 +1,4 @@
+#comments_list
+	- !@general_comments.blank? && @general_comments.each do |com|
+		.well{:id => "#{com.id}"}
+			= "#{com.body}"			

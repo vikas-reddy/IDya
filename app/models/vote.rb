@@ -1,11 +1,13 @@
 class Vote
+
   include Mongoid::Document  
+
   field :idea_id, type: Integer
   field :for_against, type: Boolean
   field :username, type: String
   
-  embedded_in :idea
-
+  embedded_in :idea, inverse_of: :votes
+  
   validates :username, presence: true
 
   after_create :save_aggregates
@@ -26,4 +28,5 @@ class Vote
     end
     idea.save
   end
+
 end

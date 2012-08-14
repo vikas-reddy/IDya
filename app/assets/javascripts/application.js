@@ -48,7 +48,7 @@ function voteIDya(data){
                           $('.vote-against-count').html(parseInt($('.vote-for-count').html())+1);
                      }
                     $('.your-vote').html("");
-                    $('.hero-unit').prepend("<div class='alert alert-success'>Thanks! Your vote was successfully sent.</div>")
+                    $('.notice-area').prepend("<div class='alert alert-success'>Thanks! Your vote was successfully sent.</div>")
                     alertInfo();
                 }
             });

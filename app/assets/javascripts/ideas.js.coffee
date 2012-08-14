@@ -25,3 +25,47 @@ jQuery ->
         true
 
   true
+  
+  $("#post_improvisation").click (e) ->
+    e.preventDefault()
+  
+    idea_id = $("#hidden_idea_id").val()
+    desc =  $("#improvisation-textarea").val()
+    if (desc.trim() != '')
+      $.ajax
+        url:      '/ideas/'+idea_id+'/post_improvisation'
+        dataType: 'html'
+        type: 'POST'
+        data:
+          content: desc
+        beforeSend: ->
+        success:  (response) ->
+          $("#improvisation-textarea").val('')
+          $("#improvisations_list").html(response)
+          true
+      true
+    else
+      alert "Please enter improvisation text."
+  true
+  
+  $("#post_comment").click (e) ->
+    e.preventDefault()
+  
+    idea_id = $("#hidden_idea_id").val()
+    desc =  $("#comments-textarea").val()
+    if (desc.trim() != '')
+      $.ajax
+        url:      '/ideas/'+idea_id+'/post_comment'
+        dataType: 'html'
+        type: 'POST'
+        data:
+          content: desc
+        beforeSend: ->
+        success:  (response) ->
+          $("#comments-textarea").val('')
+          $("#comments_list").html(response).fadeIn()
+          true
+      true
+    else
+      alert "Please enter comments text."
+  true

@@ -69,6 +69,7 @@ module IDya
     config.generators do |g|
       g.orm :mongoid
       g.template_engine :haml
+			g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
   end
 end

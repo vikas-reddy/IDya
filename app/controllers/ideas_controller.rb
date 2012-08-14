@@ -34,6 +34,9 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @idea = Idea.find(params[:id])
+    @general_comments = @idea.comments
+    @improvisations = @idea.improvisations
+
     respond_with(@idea)
   end
 
@@ -59,6 +62,26 @@ class IdeasController < ApplicationController
       end
     end
   end
+  
+  # post_improvisations
+  def post_improvisation
+  	@idea = Idea.find(params[:id])
+		@idea.improvisations.create(:content => params[:content], :username => @idea.username, :idea_id => @idea.id)
+
+		@idea.reload
+		@improvisations = @idea.improvisations
+		render :partial => "comments/improvisation_list_items"
+  end
+
+  # post_comments
+  def post_comment
+  	@idea = Idea.find(params[:id])
+		@idea.comments.create(:body => params[:content], :username => @idea.username)
+		@idea.reload
+		@general_comments = @idea.comments
+		render :partial => "comments/comment_list_items"
+  end
+
 
   # DELETE /ideas/1
   # DELETE /ideas/1.json
