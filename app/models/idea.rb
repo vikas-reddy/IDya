@@ -1,16 +1,19 @@
 class Idea
-	include Mongoid::Document
+  include Mongoid::Document
   include Mongoid::Timestamps
-	include Mongoid::Search
+  include Mongoid::Search
 
-	# This gives us the attr_accessible functionality of ActiveModel, helps us prevent user from tampering request and setting variables like username, updated_at etc.
-	include ActiveModel::MassAssignmentSecurity
-	
-	# This gives us the validations functionality to our Idea class
-	include ActiveModel::Validations
+  # This gives us the attr_accessible functionality of ActiveModel, helps us prevent user 
+  # from tampering request and setting variables like username, updated_at etc.
+  include ActiveModel::MassAssignmentSecurity
+  # This gives us the validations functionality to our Idea class
+  include ActiveModel::Validations
+
   field :title, type: String
   field :description, type: String
   field :username, type: String
+  field :for_vote_count, type: Integer, default: 0
+  field :against_vote_count, type: Integer, default: 0
 
   # Mass assignment only for title and description
   attr_accessible :title, :description
