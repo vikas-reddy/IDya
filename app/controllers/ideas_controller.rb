@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   #before_filter :apply_validations
-
+  before_filter :login_required, :except => [:index, :search]
   # GET /ideas
   # GET /ideas.json
   respond_to :html, :json, :xml
