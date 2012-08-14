@@ -9,7 +9,7 @@
         .owner
           By:
           = link_to idea.username, user_path(idea.username)
-          = gravatar_image_tag(current_user.email, :alt => current_user.full_name, :class => 'thumbnail gravatar', :gravatar => { :size => 15 })
+          =#gravatar_image_tag(@user.email, :alt => @user.full_name, :class => 'thumbnail', :gravatar => { :size => 15 })
           |
         .time
           Created:
