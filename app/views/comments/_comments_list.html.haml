@@ -1,20 +1,20 @@
 .comments_list
-	%table
-		%tr
-			%td
-				.add_comments
-					= "Add Comments"
-					&nbsp;
-			%td
-				%textarea{:rows => "3",  :id => "comments-textarea", :class => "input-xlarge"}
-		%tr
-			%td
-				&nbsp;
-			%td
-				.button
-					%input{:type => "hidden", :id => "hidden_idea_id", :value => "#{@idea.id}"}
-					%a{:class => "btn btn-primary", :id => "post_comment"}
-						="Post Comment"
-
-	%br
-	= render "comments/comment_list_items"
+  - if logged_in?
+    %table
+      %tr
+        %td
+          .add_comments
+            = "Add Comments"
+            &nbsp;
+        %td
+          %textarea{:rows => "3",  :id => "comments-textarea", :class => "input-xlarge"}
+      %tr
+        %td
+          &nbsp;
+        %td
+          .button
+            %input{:type => "hidden", :id => "hidden_idea_id", :value => "#{@idea.id}"}
+            %a{:class => "btn btn-primary", :id => "post_comment"}
+              ="Post Comment"
+  %br
+  = render "comments/comment_list_items"

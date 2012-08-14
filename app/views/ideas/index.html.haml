@@ -3,9 +3,10 @@
     .pull-left
       %h2 Ideas
     .pull-right
-      %a.btn.btn-primary{href: new_idea_path}
-        %i.icon-plus.icon-white
-        New Idea
+      - if logged_in?
+        %a.btn.btn-primary{href: new_idea_path}
+          %i.icon-plus.icon-white
+          New Idea
 
 %form.form-inline.row-fluid
   .span6.center
