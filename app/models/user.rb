@@ -13,8 +13,8 @@ class User
     @full_name, @email = details[:full_name], details[:email]
   end
 
-  def self.find(username)
-    self.new(username)
+  class <<self
+    alias_method :find, :new
   end
 
   def persisted?
