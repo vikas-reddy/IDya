@@ -1,0 +1,6 @@
+development:
+  server: ldap.pramati.com
+  port: 389
+production:
+  server: 14.140.0.154
+  port: 389

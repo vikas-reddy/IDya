@@ -1,7 +1,8 @@
 module PramatiLdap
   def self.authenticate(username, password)
     ldap = Net::LDAP.new(
-      host: 'ldap.pramati.com',
+      host: LDAP_CONFIG['server'],
+      port: LDAP_CONFIG['port'],
       auth: {
         method: :simple,
         username: "uid=#{username},ou=Employees,dc=pramati,dc=com",
@@ -12,7 +13,7 @@ module PramatiLdap
   end
 
   def self.search(q)
-    @ldap ||= Net::LDAP.new(host: 'ldap.pramati.com')
+    @ldap ||= Net::LDAP.new(host: LDAP_CONFIG['server'], port: LDAP_CONFIG['port'])
     @ldap.bind
     @ldap.search(
       base: 'ou=Employees,dc=pramati,dc=com',
@@ -26,7 +27,11 @@ module PramatiLdap
   end
 
   def self.get_details(username)
-    ldap = Net::LDAP.new(host: 'ldap.pramati.com', base: "uid=#{username},ou=Employees,dc=pramati,dc=com")
+    ldap = Net::LDAP.new(
+      host: LDAP_CONFIG['server'],
+      port: LDAP_CONFIG['port'],
+      base: "uid=#{username},ou=Employees,dc=pramati,dc=com"
+    )
     ldap.bind
 
     if ldap.search.blank?
